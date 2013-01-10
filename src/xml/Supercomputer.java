@@ -50,5 +50,17 @@ public class Supercomputer {
 	public void setNodes(List<Node> nodes) {
 		this.nodes = nodes;
 	}
+	@Override
+	public String toString() {
+		String r = "Supercomputer [name=" + name + ", network=" + network + ", os="
+				+ os + ", rmax=" + rmax + ", rpeak=" + rpeak + ", power="
+				+ power + ", nodes=" ;
+		for (int i = 0; i< nodes.size();i++){
+			r+= nodes.get(i).toString();
+		}
+		r += "]";
+		return r;
+	}
+	
 	
 }

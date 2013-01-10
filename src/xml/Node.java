@@ -77,6 +77,15 @@ public class Node {
 	public void setCpuFreq(double cpuFreq) {
 		this.cpuFreq = cpuFreq;
 	}
+	@Override
+	public String toString() {
+		return "Node [type=" + type + ", cpuVendor=" + cpuVendor + ", cpuType="
+				+ cpuType + ", gpuVendor=" + gpuVendor + ", gpuType=" + gpuType
+				+ ", notes=" + notes + ", count=" + count + ", cpuCores="
+				+ cpuCores + ", cpuCount=" + cpuCount + ", gpuCount="
+				+ gpuCount + ", memory=" + memory + ", cpuFreq=" + cpuFreq
+				+ "]";
+	}
 	
 
 }

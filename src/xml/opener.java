@@ -1,6 +1,7 @@
 package xml;
 
 import java.io.File;
+import java.util.List;
 
 
 public class opener {
@@ -10,7 +11,7 @@ public class opener {
 	 */
 	public static void main(String[] args) {
 		boolean a =true;
-		if(args.length >0 ){
+		if(args.length >0 &&false){
 			if(new File(args[0]).isFile()){ 
 				a=false;
 				Xml xml = new Xml(args[0]);
@@ -23,6 +24,11 @@ public class opener {
 			System.out.println("No valid Filepath\nTodo: Replace with synoptic");
 		
 		Xml xml = new Xml ("Rechenzentrum.xml");
+		List<Rechenzentrum> l = xml.getRechenzentren();
+		for(int i = 0;i<l.size();i++){
+			System.out.println(l.get(i).toString());
+		}
+		
 		
 	}
 

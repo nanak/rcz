@@ -9,11 +9,18 @@ public class opener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if(args[0] != null && new File(args[0]).isFile()){
-			
-		new MyFrame(new MyPanel1(),100,100,300,500);
-		}else
-			System.out.println("Todo: Replace with synoptic");
+		boolean a =true;
+		if(args.length >0 ){
+			if(new File(args[0]).isFile()){ 
+				a=false;
+				Xml xml = new Xml(args[0]);
+				new MyFrame(new MyPanel1(),100,100,300,500);
+			}else if(args[0]=="g"){
+				//TODO: Gui zur Fileauswahl
+			}
+		}
+		if(a)
+			System.out.println("No valid Filepath\nTodo: Replace with synoptic");
 		
 	}
 

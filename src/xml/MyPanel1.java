@@ -60,7 +60,7 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		for(int i = 0;i < 50; i ++){
 			rz.add("Rechenzentrum " + (i+1));
 			sp.add(new ArrayList<String>());
-			for(int ii = 0 ; ii < Math.random()+10;ii++){
+			for(int ii = 0 ; ii < Math.random()*(9)+1;ii++){
 				sp.get(i).add( (i+1) + ". Supercomputer " + ii);
 			}
 		}
@@ -95,6 +95,7 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 			
 		}else if(e.getSource() == edit){
 			System.out.println("Es wird " + dlm1.get(jl1.getSelectedIndex()) + " bearbeitet!");// nur Themporär da die dafür benötigten Componenten Fehlen
+			MyFrame mf = new MyFrame(new MyPanel2(dlm1.get(jl1.getSelectedIndex()),dlm2.get(jl2.getSelectedIndex())),500,500,500,500,false );
 		}
 	}
 	@Override

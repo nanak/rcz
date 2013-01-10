@@ -11,9 +11,12 @@ import javax.swing.JPanel;
  * @version 1.0
  */
 public class MyFrame extends JFrame{
-	public MyFrame(JPanel mp, int x , int y, int width,int height){
+	public MyFrame(JPanel mp, int x , int y, int width,int height, boolean haup){
 		this.setLayout(new BorderLayout());
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		if(haup)
+			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		else
+			this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setBounds(x, y, width, height);
 		this.add(mp);
 		this.setVisible(true);

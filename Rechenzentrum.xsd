@@ -1,0 +1,87 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="rechenzentrum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="center">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:string" name="land"/>
+              <xs:element name="supercomputer" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element name="specs">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="rmax"/>
+                          <xs:element type="xs:string" name="rpeak">
+                            <xs:annotation>
+                              <xs:documentation>in TFlops</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="power">
+                            <xs:annotation>
+                              <xs:documentation>in kW</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="network">
+                            <xs:annotation>
+                              <xs:documentation>in kW</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="os"/>
+                          <xs:element name="node" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:short" name="count"/>
+                                <xs:element name="cpu">
+                                  <xs:annotation>
+                                    <xs:documentation>in GHz  in GHz  in GHz  in GHz  in GHz</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="vendor"/>
+                                      <xs:element type="xs:string" name="type"/>
+                                      <xs:element type="xs:byte" name="cores"/>
+                                      <xs:element type="xs:float" name="freq">
+                                        <xs:annotation>
+                                          <xs:documentation>per CPU  per CPU  per CPU  per CPU  per CPU</xs:documentation>
+                                        </xs:annotation>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:byte" name="cpucount"/>
+                                <xs:element name="gpu">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="vendor"/>
+                                      <xs:element type="xs:string" name="type"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:string" name="gpucount"/>
+                                <xs:element type="xs:byte" name="memory"/>
+                                <xs:element type="xs:string" name="notes">
+                                  <xs:annotation>
+                                    <xs:documentation>in GB</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

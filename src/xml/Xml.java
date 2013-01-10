@@ -8,6 +8,11 @@ import org.jdom2.*;
 import org.jdom2.input.*;
 
 public class Xml {
+	private Document document;
+	private Element rootNode;
+	private List<Element> list;
+	private List<Supercomputer> sc;
+	
 	
 	public Xml (String path){
 		SAXBuilder builder = new SAXBuilder();
@@ -15,19 +20,20 @@ public class Xml {
 	 
 		try {
 	 
-			Document document = (Document) builder.build(xmlFile);
-			Element rootNode = document.getRootElement();
-			List<Element> list = rootNode.getChildren("staff");
-	 
-			for (int i = 0; i < list.size(); i++) {
-	 
-				Element node = (Element) list.get(i);
-				
-				System.out.println("First Name : " + node.getChildText("firstname"));
-				System.out.println("Last Name : " + node.getChildText("lastname"));
-				System.out.println("Nick Name : " + node.getChildText("nickname"));
-				System.out.println("Salary : " + node.getChildText("salary"));
+			document = (Document) builder.build(xmlFile);
+			rootNode = document.getRootElement();
+			list = rootNode.getChildren("center");
+			Supercomputer s = new Supercomputer();
+			for(int i = 0; i < list.size(); i++){
+				s.setName(list.get(i).getChildText("name"));
+				s.setNetwork(list.get(i).getChild("specs").getChildText("network"));
+				s.setOs(list.get(i).getChild("specs").getChildText("os"));
+				s.setPower(Double.parseDouble(list.get(i).getChild("specs").getChild("power").getText()));
+				s.setRmax(Double.parseDouble(list.get(i).getChild("specs").getChild("rmax").getText()));
+				s.setRpeak(Double.parseDouble(list.get(i).getChild("specs").getChild("rpeak").getText()));
 			}
+	 
+			
 	 
 	  } catch (IOException io) {
 		  System.out.println(io.getMessage());

@@ -19,8 +19,10 @@ public class opener {
 				//TODO: Gui zur Fileauswahl
 			}
 		}
-		if(a)
+		if(false)//TODO: Replace with if(a)
 			System.out.println("No valid Filepath\nTodo: Replace with synoptic");
+		
+		Xml xml = new Xml ("Rechenzentrum.xml");
 		
 	}
 

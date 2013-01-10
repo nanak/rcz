@@ -9,12 +9,16 @@ public class opener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		if(args[0] != null && new File(args[0]).isFile()){
 			
-		new MyFrame(new MyPanel1(),100,100,300,500);
 		}else
 			System.out.println("Todo: Replace with synoptic");
 		
+=======
+		// TODO Auto-generated method stub
+		new MyFrame(new MyPanel1(),100,100,300,500);
+>>>>>>> origin/master
 	}
 
 }

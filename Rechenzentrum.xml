@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rechenzentrum>
+<!--
+	<name>Oak Ridge National Laboratory</name>
+		<land>USA</land>
+		<supercomputer>
+			<name>Cray XK7</name>
+			<specs>
+				<cores>650640</cores>
+				<pflops>17.6</pflops>
+				<powermw>8.3</powermw>
+			</specs>
+		</supercomputer>
+	</name>
+-->
+	<center>
+		<name>TU Wien</name>
+		<land>Austria</land>
+		<supercomputer>
+			<name>Vienna Scientific Cluster 1</name>
+			<specs>
+				<rmax>35.5</rmax> <!-- in TFlops -->
+				<rpeak></rpeak> <!-- in kW -->
+				<power></power> <!-- in kW -->
+				<network>Infiniband QDR (40 Gbps)</network>
+				<os>Linux</os>
+				<node>
+					<type>Sun Fire X2270</type>
+					<count>436</count>
+					<cpu>
+						<vendor>Intel</vendor>
+						<type>X5550</type>
+						<cores>4</cores> <!-- per CPU -->
+						<freq>2.66</freq> <!-- in GHz -->
+					</cpu>
+					<cpucount>2</cpucount>
+					<gpu>
+						<vendor></vendor>
+						<type></type>
+					</gpu>
+					<gpucount></gpucount>
+					<memory>24</memory> <!-- in GB -->
+					<notes></notes>
+				</node>
+				<node>
+					<type>Supermicro Twin^2</type>
+					<count>40</count>
+					<cpu>
+						<vendor>Intel</vendor>
+						<type>X5650</type>
+						<cores>6</cores> <!-- per CPU -->
+						<freq>2.66</freq> <!-- in GHz -->
+					</cpu>
+					<cpucount>2</cpucount>
+					<gpu>
+						<vendor></vendor>
+						<type></type>
+					</gpu>
+					<gpucount></gpucount>
+					<memory>24</memory>
+					<notes></notes>
+				</node>
+				<node>
+					<type>Supermicro</type>
+					<count>4</count>
+					<cpu>
+						<vendor>Intel</vendor>
+						<type>X5650</type>
+						<cores>6</cores> <!-- per CPU -->
+						<freq>2.66</freq> <!-- in GHz -->
+					</cpu>
+					<cpucount>2</cpucount>
+					<gpu>
+						<vendor>NVIDIA</vendor>
+						<type>Tesla C2050</type>
+					</gpu>
+					<gpucount>2</gpucount>
+					<memory>24</memory>
+					<notes>GPU Sub-Unit</notes>
+				</node>
+			</specs>
+		</supercomputer>
+		<supercomputer>
+			<name>Vienna Scientific Cluster 2</name>
+			<specs>
+				<rmax>135.6</rmax>
+				<rpeak>185.0</rpeak>
+				<power>420</power>
+				<network></network>
+				<os>Linux (Scientific Linux 6.0)</os>
+				<node>
+					<type>SlashFive (from Megaware)</type>
+					<count>1314</count>
+					<cpu>
+						<vendor>AMD</vendor>
+						<type>Opteron Magny Cours 6132HE</type>
+						<cores>8</cores> <!-- per CPU -->
+						<freq>2.2</freq> <!-- in GHz -->
+					</cpu>
+					<cpucount>2</cpucount>
+					<gpu>
+						<vendor></vendor>
+						<type></type>
+					</gpu>
+					<gpucount></gpucount>
+					<memory>32</memory>
+					<notes></notes>
+				</node>
+				<node>
+					<type>Megware Saxonide 6100 Dual Opteron</type>
+					<count>1314</count>
+					<cpu>
+						<vendor>AMD</vendor>
+						<type>Opteron Magny Cours 6132HE</type>
+						<cores>8</cores> <!-- per CPU -->
+						<freq>2.2</freq> <!-- in GHz -->
+					</cpu>
+					<cpucount>2</cpucount>
+					<gpu>
+						<vendor></vendor>
+						<type></type>
+					</gpu>
+					<gpucount></gpucount>
+					<memory>32</memory>
+					<notes>Three login servers, two master nodes</notes>
+				</node>
+			</specs>
+		</supercomputer>
+	</center>
+</rechenzentrum>

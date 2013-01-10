@@ -20,7 +20,7 @@
 			<name>Vienna Scientific Cluster 1</name>
 			<specs>
 				<rmax>35.5</rmax> <!-- in TFlops -->
-				<rpeak></rpeak> <!-- in kW -->
+				<rpeak></rpeak> <!-- in TFlops -->
 				<power></power> <!-- in kW -->
 				<network>Infiniband QDR (40 Gbps)</network>
 				<os>Linux</os>
@@ -48,8 +48,8 @@
 					<cpu>
 						<vendor>Intel</vendor>
 						<type>X5650</type>
-						<cores>6</cores> <!-- per CPU -->
-						<freq>2.66</freq> <!-- in GHz -->
+						<cores>6</cores>
+						<freq>2.66</freq>
 					</cpu>
 					<cpucount>2</cpucount>
 					<gpu>
@@ -66,8 +66,8 @@
 					<cpu>
 						<vendor>Intel</vendor>
 						<type>X5650</type>
-						<cores>6</cores> <!-- per CPU -->
-						<freq>2.66</freq> <!-- in GHz -->
+						<cores>6</cores>
+						<freq>2.66</freq>
 					</cpu>
 					<cpucount>2</cpucount>
 					<gpu>
@@ -94,8 +94,8 @@
 					<cpu>
 						<vendor>AMD</vendor>
 						<type>Opteron Magny Cours 6132HE</type>
-						<cores>8</cores> <!-- per CPU -->
-						<freq>2.2</freq> <!-- in GHz -->
+						<cores>8</cores>
+						<freq>2.2</freq>
 					</cpu>
 					<cpucount>2</cpucount>
 					<gpu>
@@ -112,8 +112,8 @@
 					<cpu>
 						<vendor>AMD</vendor>
 						<type>Opteron Magny Cours 6132HE</type>
-						<cores>8</cores> <!-- per CPU -->
-						<freq>2.2</freq> <!-- in GHz -->
+						<cores>8</cores>
+						<freq>2.2</freq>
 					</cpu>
 					<cpucount>2</cpucount>
 					<gpu>

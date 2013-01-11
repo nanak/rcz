@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -25,14 +26,14 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 	private DefaultListModel<String> dlm1, dlm2;
 	private JList jl1, jl2;
 	private JButton neu, edit;
-	private ArrayList<String> rz = new ArrayList<String>();
-	private ArrayList<ArrayList> sp = new ArrayList<ArrayList>();
+	private List<Rechenzentrum> rz;
 	
 	/**
 	 * StandartKonstruktor
 	 */
-	public MyPanel1(){
+	public MyPanel1(List<Rechenzentrum> rz){
 		this.setLayout(new BorderLayout());
+		this.rz = rz;
 		
 		dlm1 = new DefaultListModel<String>();
 		jl1 = new JList(dlm1);
@@ -57,13 +58,6 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		
 		
 		// nur Themporär da die dafür benötigten Componenten Fehlen
-		for(int i = 0;i < 50; i ++){
-			rz.add("Rechenzentrum " + (i+1));
-			sp.add(new ArrayList<String>());
-			for(int ii = 0 ; ii < Math.random()*(9)+1;ii++){
-				sp.get(i).add( (i+1) + ". Supercomputer " + ii);
-			}
-		}
 		
 		this.add(p2);
 		this.add(p1,BorderLayout.SOUTH);
@@ -71,20 +65,17 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		jl1.setSelectedIndex(0);
 		this.updateList2(jl1.getSelectedIndex());
 		jl2.setSelectedIndex(0);
-		for(int i = 0; i < sp.get(3).size();i++){
-			System.out.println("" + i + " " + sp.get(3).get(i));
-		}
 	}
 	public void updateList1(){
 		dlm1.clear();
 		for(int i = 0; i < rz.size(); i ++){
-			dlm1.add(i, rz.get(i));
+			dlm1.add(i, rz.get(i).getName());
 		}
 	}
 	public void updateList2(int index){
 		dlm2.clear();
-		for(int i = 0; i < sp.get(index).size(); i ++){
-			dlm2.add(i,""+ sp.get(index).get(i));
+		for(int i = 0; i < rz.get(index).getSc().size(); i ++){
+			dlm2.add(i,""+ rz.get(index).getSc().get(i));
 		}
 	}
 	@Override
@@ -95,7 +86,7 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 			
 		}else if(e.getSource() == edit){
 			System.out.println("Es wird " + dlm1.get(jl1.getSelectedIndex()) + " bearbeitet!");// nur Themporär da die dafür benötigten Componenten Fehlen
-			MyFrame mf = new MyFrame(new MyPanel2(dlm1.get(jl1.getSelectedIndex()),dlm2.get(jl2.getSelectedIndex())),500,500,500,500,false );
+			MyFrame mf = new MyFrame(new MyPanel2(rz,jl1.getSelectedIndex(),jl2.getSelectedIndex()),500,500,500,500,false );
 		}
 	}
 	@Override

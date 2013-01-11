@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -23,19 +25,20 @@ public class MyPanel2 extends JPanel implements ActionListener{
 	private JTextField type, cpuVendor, cpuType, gpuVendor, gpuType, count, cpuCores, cpuCount, gpuCount, memory,cpuFreq;
 	private JTextArea notes;
 	private JLabel typel, cpuVendorl, cpuTypel, gpuVendorl, gpuTypel, countl, cpuCoresl, cpuCountl, gpuCountl, memoryl, cpuFreql,notesl;
-	
-	public MyPanel2(String namerc, String namesc){
+	private Rechenzentrum rz;
+	private Supercomputer l;
+	public MyPanel2(List<Rechenzentrum> rech, int indexrech, int indexsuper){
 		this.setLayout(new BorderLayout());
-		
+		rz = rech.get(indexrech);
 		//infos holen
-		
+		l = rech.get(indexrech).getSc().get(indexsuper);
 		//Allgemein
-		name = new JTextField();
-		network = new JTextField();
-		os = new JTextField();
-		rmax = new JTextField();
-		rpeak = new JTextField();
-		power = new JTextField();
+		name = new JTextField(l.getName());
+		network = new JTextField(l.getNetwork());
+		os = new JTextField(l.getOs());
+		rmax = new JTextField(l.getRmax()+"");
+		rpeak = new JTextField(l.getRpeak()+"");
+		power = new JTextField(l.getPower() + "");
 		
 		rmaxl = new JLabel("Max. Speed (TFlops):");
 		rpeakl = new JLabel("Peak Speed (TFlops):");
@@ -44,19 +47,19 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		//Nodes
 		nodes =new JComboBox();
 		
-		type = new JTextField();
-		cpuVendor = new JTextField();
-		cpuType = new JTextField();
-		gpuVendor = new JTextField();
-		gpuType = new JTextField();
-		count = new JTextField();
-		cpuCores = new JTextField();
-		cpuCount = new JTextField();
-		gpuCount = new JTextField();
-		memory = new JTextField();
-		cpuFreq = new JTextField();
+		type = new JTextField(l.getNodes().get(0).getType());
+		cpuVendor = new JTextField(l.getNodes().get(0).getCpuVendor());
+		cpuType = new JTextField(l.getNodes().get(0).getCpuType());
+		gpuVendor = new JTextField(l.getNodes().get(0).getGpuVendor());
+		gpuType = new JTextField(l.getNodes().get(0).getGpuType());
+		count = new JTextField(l.getNodes().get(0).getCount());
+		cpuCores = new JTextField(l.getNodes().get(0).getCpuCores());
+		cpuCount = new JTextField(l.getNodes().get(0).getCpuCount());
+		gpuCount = new JTextField(l.getNodes().get(0).getGpuCount());
+		memory = new JTextField(l.getNodes().get(0).getMemory());
+		cpuFreq = new JTextField(l.getNodes().get(0).getCpuFreq() + "");
 		
-		notes = new JTextArea();
+		notes = new JTextArea(l.getNodes().get(0).getNotes());
 		
 		typel = new JLabel();
 		cpuVendorl= new JLabel();
@@ -73,9 +76,12 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		
 		//daten setzen
 		//note type eindeutig auswahl
-		String[] nodeselemente = {"Node 1","Node 2","Node 3","Node 4","Node 5"};//type rein
+		String[] ne = new String[l.getNodes().size()];//type rein
+		for(int i = 0 ; i < ne.length;i++){
+			ne[i] = l.getNodes().get(i).getType();
+		}
 		
-		nodes =new JComboBox(nodeselemente);
+		nodes =new JComboBox(ne);
 		nodes.setSelectedIndex(0);
 		nodes.addActionListener(this);
 		
@@ -93,7 +99,19 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		p1.add(rpeak);
 		p1.add(power);
 		
-		JPanel p2 = new JPanel(new GridLayout(3,3,10,10));
+		JPanel p2 = new JPanel(new GridLayout(3,4,10,10));
+		p2.add(type);
+		p2.add(cpuVendor);
+		p2.add(cpuType);
+		p2.add(gpuVendor);
+		p2.add(gpuType);
+		p2.add(count);
+		p2.add(cpuCores);
+		p2.add(cpuCount);
+		p2.add(gpuCount);
+		p2.add(memory);
+		p2.add(cpuFreq);
+		
 		
 		JPanel p3 = new JPanel(new GridLayout(3,1,10,10));
 		
@@ -110,10 +128,25 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		
 		
 	}
+	public void update(){
+		int index = nodes.getSelectedIndex();
+		type.setText(l.getNodes().get(index).getType());
+		cpuVendor.setText(l.getNodes().get(index).getCpuVendor() + "");
+		cpuType.setText(l.getNodes().get(index).getCpuType() + "");
+		gpuVendor.setText(l.getNodes().get(index).getGpuVendor() + "");
+		gpuType.setText(l.getNodes().get(index).getGpuType() + "");
+		count.setText(l.getNodes().get(index).getCount() + "");
+		cpuCores.setText(l.getNodes().get(index).getCpuCores() + "");
+		cpuCount.setText(l.getNodes().get(index).getCpuCount() + "");
+		gpuCount.setText(l.getNodes().get(index).getGpuCount() +"");
+		memory.setText(l.getNodes().get(index).getMemory() + "");
+		cpuFreq.setText(l.getNodes().get(index).getCpuFreq() + "");
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getSource() == nodes)
+			update();
 	}
 }

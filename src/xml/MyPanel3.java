@@ -36,6 +36,9 @@ public class MyPanel3 extends JPanel implements ActionListener{
 	public void log(String txt){
 		ta.setText(ta.getText() + txt + "\n");
 	}
+	public void setText(String text){
+		ta.setText(text);
+	}
 	public void setMinMax(int min, int max){
 		p.setMaximum(max);
 		p.setMinimum(min);

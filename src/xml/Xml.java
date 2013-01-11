@@ -36,6 +36,10 @@ public class Xml {
 
 	public void readInXml(String path) {
 		SAXBuilder builder = new SAXBuilder();
+//		SAXBuilder builder = new SAXBuilder("org.apache.xerces.parsers.SAXParser", true);
+//		builder.setFeature( "http://apache.org/xml/features/validation/schema", true);
+//		builder.setProperty(
+//				  "http://apache.org/xml/properties/schema/external-schemaLocation",   "Rechenzentrum.xsd");
 		File xmlFile = new File(path);
 		rz = new ArrayList<Rechenzentrum>();
 		
@@ -131,8 +135,9 @@ public class Xml {
 				r.setSc(sl);
 				rz.add(r);
 			}
-			Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new WindowEvent(mf, WindowEvent.WINDOW_CLOSING));//Fenster aubslenden wenn Fertig
-			
+			//Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new WindowEvent(mf, WindowEvent.WINDOW_CLOSING));//Fenster aubslenden wenn Fertig
+			mf.dispose();
+			new MyFrame(new MyPanel1(rz),100,100,500,800,true);
 //			System.out.println("Gesamtdauer: "+((System.currentTimeMillis()/1000)-timeGes));
 		} catch (IOException io) {
 			System.out.println(io.getMessage());

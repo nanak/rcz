@@ -75,7 +75,7 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 	public void updateList2(int index){
 		dlm2.clear();
 		for(int i = 0; i < rz.get(index).getSc().size(); i ++){
-			dlm2.add(i,""+ rz.get(index).getSc().get(i));
+			dlm2.add(i,""+ rz.get(index).getSc().get(i).getName());
 		}
 	}
 	@Override

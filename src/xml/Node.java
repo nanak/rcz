@@ -5,6 +5,20 @@ public class Node {
 	private int count, cpuCores, cpuCount, gpuCount, memory;
 	private double cpuFreq;
 	
+	public Node(){
+		type = "";
+		cpuVendor = "";
+		cpuType = "";
+		gpuVendor="";
+		gpuType="";
+		notes="";
+		count = 0;
+		cpuCores=0;
+		cpuCount=0;
+		gpuCount=0;
+		memory=0;
+		cpuFreq=0;
+	}
 	public String getType() {
 		return type;
 	}

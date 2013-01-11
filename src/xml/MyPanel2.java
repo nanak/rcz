@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -30,6 +31,9 @@ public class MyPanel2 extends JPanel implements ActionListener{
 	private Supercomputer l;
 	private JButton back, edit;
 	private MyPanel1 mp;
+	//Erweitern
+	private JTextField addNode;
+	private JButton addNodeButton;
 	
 	public MyPanel2(List<Rechenzentrum> rech, int indexrech, int indexsuper,MyPanel1 mp){
 		this.setLayout(new BorderLayout());
@@ -51,8 +55,12 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		
 		back = new JButton("Abrechen");
 		edit = new JButton("Ändern");
+		addNodeButton = new JButton("Hinzufügen");
 		back.addActionListener(this);
 		edit.addActionListener(this);
+		addNodeButton.addActionListener(this);
+		
+		addNode = new JTextField();
 		
 		//
 		//Undrückbar
@@ -61,32 +69,36 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		//Nodes
 		nodes =new JComboBox();
 		
-		type = new JTextField(l.getNodes().get(0).getType());
-		cpuVendor = new JTextField(l.getNodes().get(0).getCpuVendor());
-		cpuType = new JTextField(l.getNodes().get(0).getCpuType());
-		gpuVendor = new JTextField(l.getNodes().get(0).getGpuVendor());
-		gpuType = new JTextField(l.getNodes().get(0).getGpuType());
-		count = new JTextField(l.getNodes().get(0).getCount());
-		cpuCores = new JTextField(l.getNodes().get(0).getCpuCores());
-		cpuCount = new JTextField(l.getNodes().get(0).getCpuCount());
-		gpuCount = new JTextField(l.getNodes().get(0).getGpuCount());
-		memory = new JTextField(l.getNodes().get(0).getMemory());
-		cpuFreq = new JTextField(l.getNodes().get(0).getCpuFreq() + "");
+		type = new JTextField();
+		cpuVendor = new JTextField();
+		cpuType = new JTextField();
+		gpuVendor = new JTextField();
+		gpuType = new JTextField();
+		count = new JTextField();
+		cpuCores = new JTextField();
+		cpuCount = new JTextField();
+		gpuCount = new JTextField();
+		memory = new JTextField();
+		cpuFreq = new JTextField();
 		
-		notes = new JTextArea(l.getNodes().get(0).getNotes());
+		notes = new JTextArea();
 		
-		typel = new JLabel();
-		cpuVendorl= new JLabel();
-		cpuTypel= new JLabel();
-		gpuVendorl= new JLabel();
-		gpuTypel= new JLabel();
-		countl= new JLabel();
-		cpuCoresl= new JLabel();
-		cpuCountl= new JLabel();
-		gpuCountl= new JLabel();
-		memoryl= new JLabel();
-		cpuFreql= new JLabel();
-		notesl= new JLabel();
+		
+		typel = new JLabel("Type");
+		countl= new JLabel("Anzahl");
+		memoryl= new JLabel("RAM");
+		
+		cpuVendorl= new JLabel("Hersteller");
+		cpuTypel= new JLabel("Model");
+		cpuCoresl= new JLabel("Kerne pro CPU");
+		cpuCountl= new JLabel("Anzahl CPU");
+		cpuFreql= new JLabel("Taktfrequenz");
+		
+		gpuVendorl= new JLabel("Hersteller");
+		gpuTypel= new JLabel("Model");
+		gpuCountl= new JLabel("Anzahl GPU");
+		
+		notesl= new JLabel("");
 		
 		//daten setzen
 		//note type eindeutig auswahl
@@ -96,15 +108,14 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		}
 		
 		nodes =new JComboBox(ne);
-		nodes.setSelectedIndex(0);
 		nodes.addActionListener(this);
 		
 		JLabel nodel = new JLabel("Node:");
 		
-		JSeparator s = new JSeparator();
 
+		//Haupmerkmale Supercomputer
 		JPanel p1 = new JPanel(new GridLayout(3,3,10,10));
-		
+
 		p1.add(name);
 		p1.add(network);
 		p1.add(os);
@@ -115,26 +126,72 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		p1.add(rpeak);
 		p1.add(power);
 		
-		JPanel p2 = new JPanel(new GridLayout(3,4,10,10));
-		p2.add(type);
-		p2.add(cpuVendor);
-		p2.add(cpuType);
-		p2.add(gpuVendor);
-		p2.add(gpuType);
-		p2.add(count);
-		p2.add(cpuCores);
-		p2.add(cpuCount);
-		p2.add(gpuCount);
-		p2.add(memory);
-		p2.add(cpuFreq);
+		//Node
+		JPanel p2 = new JPanel(new GridLayout(5,1,10,10));
+		
+		//Teil 1 allgemein
+		JPanel p21 = new JPanel(new GridLayout(2,3,10,10));
+		
+		p21.add(typel);
+		p21.add(countl);
+		p21.add(memoryl);
+		p21.add(type);
+		p21.add(count);
+		p21.add(memory);
+		
+		//Teil 2 cpu
+		JPanel p221 = new JPanel(new GridLayout(2,3,10,10));
+		//Zeile 1
+		p221.add(new JLabel("CPU:"));
+		p221.add(cpuVendorl);
+		p221.add(cpuTypel);
+		//Zeile 2
+		p221.add(new JLabel(""));
+		p221.add(cpuVendor);
+		p221.add(cpuType);
+		//Zeile 3
+		JPanel p222 = new JPanel(new GridLayout(2,3,10,10));
+		p222.add(cpuCoresl);
+		p222.add(cpuCountl);
+		p222.add(cpuFreql);
+		//Zeile 4
+		p222.add(cpuCores);
+		p222.add(cpuCount);
+		p222.add(cpuFreq);
+		
+		//Teil 3 GPU
+		JPanel p23 = new JPanel(new GridLayout(2,3,10,10));
+		p23.add(gpuVendorl);
+		p23.add(gpuTypel);
+		p23.add(gpuCountl);
+		p23.add(gpuVendor);
+		p23.add(gpuType);
+		p23.add(gpuCount);
+		
+		p2.add(p21);
+		
+		p2.add(p221);
+		p2.add(p222);
+		
+		p2.add(p23);
+		
 		p2.add(notes);
 		
 		
-		JPanel p3 = new JPanel(new GridLayout(3,1,10,10));
+		JPanel p3 = new JPanel(new BorderLayout());
 		
-		p3.add(s);
-		p3.add(nodel);
-		p3.add(nodes);
+		JPanel p32 = new JPanel(new GridLayout(2,2,10,10));
+		
+		p32.add(nodel);
+		p32.add(new JLabel("Neuer Node:"));
+		p32.add(nodes);
+		JPanel p321 = new JPanel(new BorderLayout());
+		p321.add(addNode);
+		p321.add(addNodeButton,BorderLayout.EAST);
+		p32.add(p321);
+		
+		p3.add(p32);
+		p3.add(new JSeparator(),BorderLayout.NORTH);
 		
 		JPanel p4 = new JPanel(new BorderLayout());
 		
@@ -149,6 +206,8 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		this.add(p4,BorderLayout.CENTER);
 		this.add(p5,BorderLayout.SOUTH);
 		
+		
+		this.update();
 	}
 	public void update(){
 		int index = nodes.getSelectedIndex();
@@ -164,11 +223,11 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		memory.setText(l.getNodes().get(index).getMemory() + "");
 		cpuFreq.setText(l.getNodes().get(index).getCpuFreq() + "");
 		notes.setText(l.getNodes().get(index).getNotes());
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getSource() == nodes)
 			update();
 		if(e.getSource() == back){
@@ -176,6 +235,20 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		}
 		if(e.getSource() == edit){
 			//tODO EDIT
+		}
+		if(e.getSource() == addNodeButton){
+			String txt = addNode.getText();
+			if(txt.length() > 3){
+				l.getNodes().add(new Node());
+				l.getNodes().get(l.getNodes().size()-1).setType(txt);
+				this.update();
+				nodes.addItem(txt);
+				nodes.setSelectedIndex((l.getNodes().size()-1));
+				addNode.setText("");
+			}else{
+				JOptionPane.showMessageDialog(null, "Type muss länger als 3 sein!","Fehlermeldung",
+					    JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }

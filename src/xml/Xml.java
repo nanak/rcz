@@ -137,7 +137,7 @@ public class Xml {
 			}
 			//Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new WindowEvent(mf, WindowEvent.WINDOW_CLOSING));//Fenster aubslenden wenn Fertig
 			mf.dispose();
-			new MyFrame(new MyPanel1(rz),100,100,500,800,true);
+			new MyFrame(new MyPanel1(rz),100,100,500,600,true);
 //			System.out.println("Gesamtdauer: "+((System.currentTimeMillis()/1000)-timeGes));
 		} catch (IOException io) {
 			System.out.println(io.getMessage());

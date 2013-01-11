@@ -13,7 +13,7 @@ public class opener {
 	public static void main(String[] args) {
 		
 		boolean a =true;
-		if(args.length >0&&false ){
+		if(args.length > 0){
 			if(new File(args[0]).isFile()){ 
 				a=false;
 				Xml xml = new Xml(args[0]);
@@ -28,15 +28,15 @@ public class opener {
 			}
 		}
 		if(a)//TODO: Replace with if(a)
-			System.out.println("No valid Filepath\nTodo: Replace with synoptic\n\n -<filepath>|-d|-g\n Angegebenes Rechenzentrum-Xml Öffnen    |   defaultXML  | GUI zur Fileauswahl (nicht implementiert)");
+			System.out.println("No valid Filepath\nTodo: Replace with synoptic\n\n -<filepath>|d|g\n Angegebenes Rechenzentrum-Xml Öffnen    |   defaultXML  | GUI zur Fileauswahl (nicht implementiert)");
 		
 		
-		//Workaround temporär
-		Xml xml = new Xml ("Rechenzentrum.xml");
-		List<Rechenzentrum> l = xml.getRechenzentren();
-		for(int i = 0;i<l.size();i++){
-			System.out.println(l.get(i).toString());
-		}
+//		//Workaround temporär
+//		Xml xml = new Xml ("Rechenzentrum.xml");
+//		List<Rechenzentrum> l = xml.getRechenzentren();
+//		for(int i = 0;i<l.size();i++){
+//			System.out.println(l.get(i).toString());
+//		}
 		
 		
 	}

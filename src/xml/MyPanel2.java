@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,8 +28,12 @@ public class MyPanel2 extends JPanel implements ActionListener{
 	private JLabel typel, cpuVendorl, cpuTypel, gpuVendorl, gpuTypel, countl, cpuCoresl, cpuCountl, gpuCountl, memoryl, cpuFreql,notesl;
 	private Rechenzentrum rz;
 	private Supercomputer l;
-	public MyPanel2(List<Rechenzentrum> rech, int indexrech, int indexsuper){
+	private JButton back, edit;
+	private MyPanel1 mp;
+	
+	public MyPanel2(List<Rechenzentrum> rech, int indexrech, int indexsuper,MyPanel1 mp){
 		this.setLayout(new BorderLayout());
+		this.mp = mp;
 		rz = rech.get(indexrech);
 		//infos holen
 		l = rech.get(indexrech).getSc().get(indexsuper);
@@ -43,6 +48,15 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		rmaxl = new JLabel("Max. Speed (TFlops):");
 		rpeakl = new JLabel("Peak Speed (TFlops):");
 		powerl = new JLabel("Stromverbrauch (kw):");
+		
+		back = new JButton("Abrechen");
+		edit = new JButton("Ändern");
+		back.addActionListener(this);
+		edit.addActionListener(this);
+		
+		//
+		//Undrückbar
+		edit.setEnabled(false);
 		
 		//Nodes
 		nodes =new JComboBox();
@@ -85,6 +99,8 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		nodes.setSelectedIndex(0);
 		nodes.addActionListener(this);
 		
+		JLabel nodel = new JLabel("Node:");
+		
 		JSeparator s = new JSeparator();
 
 		JPanel p1 = new JPanel(new GridLayout(3,3,10,10));
@@ -111,11 +127,13 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		p2.add(gpuCount);
 		p2.add(memory);
 		p2.add(cpuFreq);
+		p2.add(notes);
 		
 		
 		JPanel p3 = new JPanel(new GridLayout(3,1,10,10));
 		
 		p3.add(s);
+		p3.add(nodel);
 		p3.add(nodes);
 		
 		JPanel p4 = new JPanel(new BorderLayout());
@@ -123,9 +141,13 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		p4.add(p3,BorderLayout.NORTH);
 		p4.add(p2);
 		
+		JPanel p5 = new JPanel(new GridLayout(1,2,10,10));
+		p5.add(back);
+		p5.add(edit);
+		
 		this.add(p1,BorderLayout.NORTH);
 		this.add(p4,BorderLayout.CENTER);
-		
+		this.add(p5,BorderLayout.SOUTH);
 		
 	}
 	public void update(){
@@ -141,6 +163,7 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		gpuCount.setText(l.getNodes().get(index).getGpuCount() +"");
 		memory.setText(l.getNodes().get(index).getMemory() + "");
 		cpuFreq.setText(l.getNodes().get(index).getCpuFreq() + "");
+		notes.setText(l.getNodes().get(index).getNotes());
 	}
 
 	@Override
@@ -148,5 +171,11 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource() == nodes)
 			update();
+		if(e.getSource() == back){
+			mp.dis();
+		}
+		if(e.getSource() == edit){
+			//tODO EDIT
+		}
 	}
 }

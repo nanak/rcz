@@ -27,6 +27,7 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 	private JList jl1, jl2;
 	private JButton neu, edit;
 	private List<Rechenzentrum> rz;
+	private MyFrame mf;
 	
 	/**
 	 * StandartKonstruktor
@@ -45,6 +46,10 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		edit = new JButton("Bearbeiten");
 		neu.addActionListener(this);
 		edit.addActionListener(this);
+		
+		//
+		//Undrückbar
+		neu.setEnabled(false);
 		
 		JPanel p1 = new JPanel(new GridLayout(1,2,10,10));
 		p1.add(neu);
@@ -85,8 +90,8 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 			System.out.println("Es wird ein neues Element Erstellt");// nur Themporär da die dafür benötigten Componenten Fehlen
 			
 		}else if(e.getSource() == edit){
-			System.out.println("Es wird " + dlm1.get(jl1.getSelectedIndex()) + " bearbeitet!");// nur Themporär da die dafür benötigten Componenten Fehlen
-			MyFrame mf = new MyFrame(new MyPanel2(rz,jl1.getSelectedIndex(),jl2.getSelectedIndex()),500,500,500,500,false );
+			//System.out.println("Es wird " + dlm1.get(jl1.getSelectedIndex()) + " bearbeitet!");// nur Themporär da die dafür benötigten Componenten Fehlen
+			mf = new MyFrame(new MyPanel2(rz,jl1.getSelectedIndex(),jl2.getSelectedIndex(),this),600,100,500,600,false );
 		}
 	}
 	@Override
@@ -95,5 +100,8 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 			this.updateList2(jl1.getSelectedIndex());
 		}
 		
+	}
+	public void dis(){
+		mf.dispose();
 	}
 }

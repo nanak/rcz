@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <rechenzentrum>
-<!--
-	<name>Oak Ridge National Laboratory</name>
+	<center>
+		<name>Oak Ridge National Laboratory</name>
 		<land>USA</land>
 		<supercomputer>
-			<name>Cray XK7</name>
+			<name>Titan (Cray XK7)</name>
 			<specs>
-				<cores>650640</cores>
-				<pflops>17.6</pflops>
-				<powermw>8.3</powermw>
+				<rmax>17590</rmax> <!-- in TFlops -->
+				<rpeak>27117.5</rpeak> <!-- in TFlops -->
+				<power>830</power> <!-- in kW -->
+				<network>Cray Gemini interconnect</network>
+				<os>Cray Linux Environment</os>
+				<node>
+					<type>Cray XK7 Cabinet</type>
+					<count>18688</count>
+					<cpu>
+						<vendor>AMD</vendor>
+						<type>Opteron 6274</type>
+						<cores>16</cores> <!-- per CPU -->
+						<freq>2.2</freq> <!-- in GHz -->
+					</cpu>
+					<cpucount>1</cpucount>
+					<gpu>
+						<vendor>NVIDIA</vendor>
+						<type>Tesla K20</type>
+					</gpu>
+					<gpucount>1</gpucount> <!-- per node -->
+					<memory>38</memory> <!-- in GB -->
+					<notes></notes>
+				</node>
 			</specs>
 		</supercomputer>
-	</name>
--->
+	</center>
 	<center>
 		<name>TU Wien</name>
 		<land>Austria</land>
 		<supercomputer>
 			<name>Vienna Scientific Cluster 1</name>
 			<specs>
-				<rmax>35.5</rmax> <!-- in TFlops -->
-				<rpeak></rpeak> <!-- in TFlops -->
-				<power></power> <!-- in kW -->
+				<rmax>35.5</rmax>
+				<rpeak></rpeak>
+				<power></power>
 				<network>Infiniband QDR (40 Gbps)</network>
 				<os>Linux</os>
 				<node>
@@ -30,8 +49,8 @@
 					<cpu>
 						<vendor>Intel</vendor>
 						<type>X5550</type>
-						<cores>4</cores> <!-- per CPU -->
-						<freq>2.66</freq> <!-- in GHz -->
+						<cores>4</cores>
+						<freq>2.66</freq>
 					</cpu>
 					<cpucount>2</cpucount>
 					<gpu>
@@ -39,7 +58,7 @@
 						<type></type>
 					</gpu>
 					<gpucount></gpucount>
-					<memory>24</memory> <!-- in GB -->
+					<memory>24</memory>
 					<notes></notes>
 				</node>
 				<node>

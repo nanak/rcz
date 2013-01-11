@@ -6,8 +6,8 @@
 		<supercomputer>
 			<name>Titan (Cray XK7)</name>
 			<specs>
-				<rmax>17590</rmax> <!-- in TFlops -->
-				<rpeak>27117.5</rpeak> <!-- in TFlops -->
+				<rmax>17590</rmax> <!-- Linpack Performance in TFlops -->
+				<rpeak>27117.5</rpeak> <!-- Theoretical Peak in TFlops -->
 				<power>830</power> <!-- in kW -->
 				<network>Cray Gemini interconnect</network>
 				<os>Cray Linux Environment</os>
@@ -27,6 +27,38 @@
 					</gpu>
 					<gpucount>1</gpucount> <!-- per node -->
 					<memory>38</memory> <!-- in GB -->
+					<notes></notes>
+				</node>
+			</specs>
+		</supercomputer>
+	</center>
+	<center>
+		<name>Lawrence Livermore National Laboratory</name>
+		<land>USA</land>
+		<supercomputer>
+			<name>IBM Sequoia</name>
+			<specs>
+				<rmax>16324.8</rmax>
+				<rpeak>20132.7</rpeak>
+				<power>7890</power>
+				<network>Custom Interconnect</network>
+				<os>Linux</os>
+				<node>
+					<type>IBM Sequoia</type>
+					<count>98304</count>
+					<cpu>
+						<vendor>PowerPC</vendor>
+						<type>A2-BlueGene/Q</type>
+						<cores>18</cores>
+						<freq>1.6</freq>
+					</cpu>
+					<cpucount>1</cpucount>
+					<gpu>
+						<vendor></vendor>
+						<type></type>
+					</gpu>
+					<gpucount></gpucount>
+					<memory>16</memory>
 					<notes></notes>
 				</node>
 			</specs>

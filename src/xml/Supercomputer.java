@@ -2,65 +2,50 @@ package xml;
 
 import java.util.List;
 
-public class Supercomputer {
-	private String name, network, os;
-	private double rmax, rpeak, power;
-	private List<Node> nodes;
+import org.jdom2.Element;
+
+public class Supercomputer extends XMLLoader{
 	
+	private String name;
+	private Specs specs;
+	
+	public Supercomputer (Element e){
+		super(e);
+	}
+	
+	public void setName(String name) {
+		cv(this.name , name);
+	}
 	
 	public String getName() {
+		name=loadString(name,"name");
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public Specs getSpecs() {
+		specs=loadElement(specs, "specs", new Specs(getUnsetElement()));
+		return specs;
 	}
-	public String getNetwork() {
-		return network;
-	}
-	public void setNetwork(String network) {
-		this.network = network;
-	}
-	public String getOs() {
-		return os;
-	}
-	public void setOs(String os) {
-		this.os = os;
-	}
-	public double getRmax() {
-		return rmax;
-	}
-	public void setRmax(double rmax) {
-		this.rmax = rmax;
-	}
-	public double getRpeak() {
-		return rpeak;
-	}
-	public void setRpeak(double rpeak) {
-		this.rpeak = rpeak;
-	}
-	public double getPower() {
-		return power;
-	}
-	public void setPower(double power) {
-		this.power = power;
-	}
-	public List<Node> getNodes() {
-		return nodes;
-	}
-	public void setNodes(List<Node> nodes) {
-		this.nodes = nodes;
-	}
-	@Override
-	public String toString() {
-		String r = "Supercomputer [name=" + name + ", network=" + network + ", os="
-				+ os + ", rmax=" + rmax + ", rpeak=" + rpeak + ", power="
-				+ power + ", nodes=" ;
-		for (int i = 0; i< nodes.size();i++){
-			r+= nodes.get(i).toString();
-		}
-		r += "]";
-		return r;
+
+	public void setSpecs(Specs specs) {
+		cv(this.specs, specs);
 	}
 	
+	
+	@Override
+	public void loadAll(){
+		name=loadString(name,"name");
+		specs=loadElement(specs, "specs", new Specs(getUnsetElement()));
+		specs.loadAll();
+		setLoaded(true);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Supercomputer [Name=").append(getName())
+				.append(", Specs=").append(getSpecs()).append("]");
+		return builder.toString();
+	}
 	
 }

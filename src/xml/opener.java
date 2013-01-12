@@ -11,20 +11,21 @@ public class opener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+		Xml xml;
 		boolean a =true;
 		if(args.length > 0){
 			if(new File(args[0]).isFile()){ 
 				a=false;
-				Xml xml = new Xml(args[0]);
+				xml = new Xml(args[0]);
 				
-			}else if(args[0]=="g"){
+			}else if(args[0].charAt(0)=='g'){
 				a=false;
 				System.out.println("Todo: Hier kommt mal ne gui");
 				//TODO: Gui zur Fileauswahl
-			}else if(args[0]=="d"){
+			}else if(args[0].charAt(0)=='d'){
 				a=false;
-				new Xml("Rechenzentrum.xml");
+				xml = new Xml("Rechenzentrum.xml",true);
+				new MyFrame(new MyPanel1(xml),100,100,500,600,true);
 			}
 		}
 		if(a)//TODO: Replace with if(a)

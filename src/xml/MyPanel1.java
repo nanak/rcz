@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.jdom2.Element;
+
 /**
  * Diese Klasse ist für den Aufbau und das Anzeigen der Grafikelemente ZUständig
  * @author Dominik Backhausen
@@ -32,9 +34,10 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 	/**
 	 * StandartKonstruktor
 	 */
-	public MyPanel1(List<Rechenzentrum> rz){
+	public MyPanel1(Xml x){
+		
 		this.setLayout(new BorderLayout());
-		this.rz = rz;
+		this.rz = x.getRechenzentren();
 		
 		dlm1 = new DefaultListModel<String>();
 		jl1 = new JList(dlm1);
@@ -79,8 +82,10 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 	}
 	public void updateList2(int index){
 		dlm2.clear();
-		for(int i = 0; i < rz.get(index).getSc().size(); i ++){
-			dlm2.add(i,""+ rz.get(index).getSc().get(i).getName());
+//		for (Supercomputer e : rz.get(index).getSc())
+//			dlm2.add(index, e.getName());
+		for(int i = 0;  i < rz.get(index).getSc().size(); i ++){
+			dlm2.add(i, rz.get(index).getSc().get(i).getName());
 		}
 	}
 	@Override

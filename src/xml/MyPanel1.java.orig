@@ -94,58 +94,64 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		atomic = false;
 	}
 	public void updateList2(int index){
-		if(!atomic){
-			dlm2.clear();
+<<<<<<< HEAD
+		dlm2.clear();
 //		for (Supercomputer e : rz.get(index).getSc())
 //			dlm2.add(index, e.getName());
-		for(int i = 0; i < rz.get(index).getSc().size(); i ++){
+		for(int i = 0;  i < rz.get(index).getSc().size(); i ++){
+			dlm2.add(i, rz.get(index).getSc().get(i).getName());
+=======
+		if(!atomic){
+			dlm2.clear();
+			for(int i = 0; i < rz.get(index).getSc().size(); i ++){
 				dlm2.add(i,""+ rz.get(index).getSc().get(i).getName());
 			}
+>>>>>>> 551fae707f0268e09ac722e69e6293ba4049fd7e
 		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		// TODO Auto-generated method stub
-//		if(e.getSource() == neur){
-//			String txt = JOptionPane.showInputDialog("Bte den Namen von dem Neuen Rechenzentrum angeben!");
-//			if(txt != null){
-//				String txt1 = JOptionPane.showInputDialog("Bte das Land von dem Neuen Rechenzentrum angeben!");
-//				if(txt1 != null){
-//					System.out.println(txt);
-//					if( txt.length() > 3 || txt1.length() > 3){
-//						Rechenzentrum r = new Rechenzentrum();
-//						r.setName(txt);
-//						r.setLand(txt1);
-//						r.setSc(new ArrayList<Supercomputer>());
-//						rz.add(r);
-//						updateList1();
-//					}else{
-//						JOptionPane.showMessageDialog(null, "Eingabe Fehlgeschlagen! \nSie müssen mindestens 3 Zeichen lang sein!","Fehlermeldung",JOptionPane.ERROR_MESSAGE);
-//					}
-//				}
-//			}
-//		} else 
-		 if(e.getSource() == edit){
+		// TODO Auto-generated method stub
+		if(e.getSource() == neur){
+			String txt = JOptionPane.showInputDialog("Bte den Namen von dem Neuen Rechenzentrum angeben!");
+			if(txt != null){
+				String txt1 = JOptionPane.showInputDialog("Bte das Land von dem Neuen Rechenzentrum angeben!");
+				if(txt1 != null){
+					System.out.println(txt);
+					if( txt.length() > 3 || txt1.length() > 3){
+						Rechenzentrum r = new Rechenzentrum();
+						r.setName(txt);
+						r.setLand(txt1);
+						r.setSc(new ArrayList<Supercomputer>());
+						rz.add(r);
+						updateList1();
+					}else{
+						JOptionPane.showMessageDialog(null, "Eingabe Fehlgeschlagen! \nSie müssen mindestens 3 Zeichen lang sein!","Fehlermeldung",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+			
+		}else if(e.getSource() == edit){
 			//System.out.println("Es wird " + dlm1.get(jl1.getSelectedIndex()) + " bearbeitet!");// nur Themporär da die dafür benötigten Componenten Fehlen
 			mf = new MyFrame(new MyPanel2(rz,jl1.getSelectedIndex(),jl2.getSelectedIndex(),this),600,100,500,600,false );
 		}
-//		if(e.getSource() == neus){
-//			int n = JOptionPane.showConfirmDialog(null,"Hast du das Rechenzentrum ausgewählt zu dem du einen Supercomputer hinzufügen willst?","Bestätigung",JOptionPane.YES_NO_OPTION);
-//			if( n == 1){
-//				JOptionPane.showMessageDialog(null, "Bitte vorher das Rechenzentrum makieren!");
-//			}else{
-//				String txt = JOptionPane.showInputDialog("Bitte den Namen für den Supercomputer eingeben!");
-//				if(txt != null && txt.length() > 3){
-//					Supercomputer s = new Supercomputer();
-//					s.setName(txt);
-//					List<Node> l = new ArrayList<Node>();
-//					l.add(new Node());
-//					s.setNodes(l);
-//					rz.get(jl1.getSelectedIndex()).getSc().add(s);
-//					this.updateList2(jl1.getSelectedIndex());
-//				}
-//			}
-//		}
+		if(e.getSource() == neus){
+			int n = JOptionPane.showConfirmDialog(null,"Hast du das Rechenzentrum ausgewählt zu dem du einen Supercomputer hinzufügen willst?","Bestätigung",JOptionPane.YES_NO_OPTION);
+			if( n == 1){
+				JOptionPane.showMessageDialog(null, "Bitte vorher das Rechenzentrum makieren!");
+			}else{
+				String txt = JOptionPane.showInputDialog("Bitte den Namen für den Supercomputer eingeben!");
+				if(txt != null && txt.length() > 3){
+					Supercomputer s = new Supercomputer();
+					s.setName(txt);
+					List<Node> l = new ArrayList<Node>();
+					l.add(new Node());
+					s.setNodes(l);
+					rz.get(jl1.getSelectedIndex()).getSc().add(s);
+					this.updateList2(jl1.getSelectedIndex());
+				}
+			}
+		}
 		
 	}
 	@Override

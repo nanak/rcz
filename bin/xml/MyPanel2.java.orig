@@ -74,6 +74,7 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		//Nodes
 		nodes =new JComboBox();
 		
+<<<<<<< HEAD
 		type = new JTextField(sp.getNodes().get(0).getType());
 		cpuVendor = new JTextField(sp.getNodes().get(0).getCpu().getVendor());
 		cpuType = new JTextField(sp.getNodes().get(0).getCpu().getType());
@@ -87,6 +88,33 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		cpuFreq = new JTextField(sp.getNodes().get(0).getCpu().getFreq() + "");
 		
 		notes = new JTextArea(sp.getNodes().get(0).getNotes());
+		
+		typel = new JLabel();
+		cpuVendorl= new JLabel();
+		cpuTypel= new JLabel();
+		gpuVendorl= new JLabel();
+		gpuTypel= new JLabel();
+		countl= new JLabel();
+		cpuCoresl= new JLabel();
+		cpuCountl= new JLabel();
+		gpuCountl= new JLabel();
+		memoryl= new JLabel();
+		cpuFreql= new JLabel();
+		notesl= new JLabel();
+=======
+		type = new JTextField();
+		cpuVendor = new JTextField();
+		cpuType = new JTextField();
+		gpuVendor = new JTextField();
+		gpuType = new JTextField();
+		count = new JTextField();
+		cpuCores = new JTextField();
+		cpuCount = new JTextField();
+		gpuCount = new JTextField();
+		memory = new JTextField();
+		cpuFreq = new JTextField();
+		
+		notes = new JTextArea();
 		
 		
 		typel = new JLabel("Type");
@@ -104,6 +132,7 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		gpuCountl= new JLabel("Anzahl GPU");
 		
 		notesl= new JLabel("");
+>>>>>>> 551fae707f0268e09ac722e69e6293ba4049fd7e
 		
 		//daten setzen
 		//note type eindeutig auswahl
@@ -216,6 +245,7 @@ public class MyPanel2 extends JPanel implements ActionListener{
 	}
 	public void update(){
 		int index = nodes.getSelectedIndex();
+<<<<<<< HEAD
 		type.setText(sp.getNodes().get(index).getType());
 		cpuVendor.setText(sp.getNodes().get(index).getCpu().getVendor() + "");
 		cpuType.setText(sp.getNodes().get(index).getCpu().getType() + "");
@@ -228,32 +258,46 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		memory.setText(sp.getNodes().get(index).getMemory() + "");
 		cpuFreq.setText(sp.getNodes().get(index).getCpu().getFreq() + "");
 		notes.setText(sp.getNodes().get(index).getNotes());
+=======
+		type.setText(l.getNodes().get(index).getType());
+		cpuVendor.setText(l.getNodes().get(index).getCpuVendor() + "");
+		cpuType.setText(l.getNodes().get(index).getCpuType() + "");
+		gpuVendor.setText(l.getNodes().get(index).getGpuVendor() + "");
+		gpuType.setText(l.getNodes().get(index).getGpuType() + "");
+		count.setText(l.getNodes().get(index).getCount() + "");
+		cpuCores.setText(l.getNodes().get(index).getCpuCores() + "");
+		cpuCount.setText(l.getNodes().get(index).getCpuCount() + "");
+		gpuCount.setText(l.getNodes().get(index).getGpuCount() +"");
+		memory.setText(l.getNodes().get(index).getMemory() + "");
+		cpuFreq.setText(l.getNodes().get(index).getCpuFreq() + "");
+		notes.setText(l.getNodes().get(index).getNotes());
 		
+>>>>>>> 551fae707f0268e09ac722e69e6293ba4049fd7e
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if(e.getSource() == nodes)
-//			update();
-//		if(e.getSource() == back){
-//			mp.dis();
-//		}
-//		if(e.getSource() == edit){
-//			//tODO EDIT
-//		}
-//		if(e.getSource() == addNodeButton){
-//			String txt = addNode.getText();
-//			if(txt.length() > 3){
-//				l.getNodes().add(new Node());
-//				l.getNodes().get(l.getNodes().size()-1).setType(txt);
-//				this.update();
-//				nodes.addItem(txt);
-//				nodes.setSelectedIndex((l.getNodes().size()-1));
-//				addNode.setText("");
-//			}else{
-//				JOptionPane.showMessageDialog(null, "Type muss länger als 3 sein!","Fehlermeldung",
-//					    JOptionPane.ERROR_MESSAGE);
-//			}
-//		}
+		if(e.getSource() == nodes)
+			update();
+		if(e.getSource() == back){
+			mp.dis();
+		}
+		if(e.getSource() == edit){
+			//tODO EDIT
+		}
+		if(e.getSource() == addNodeButton){
+			String txt = addNode.getText();
+			if(txt.length() > 3){
+				l.getNodes().add(new Node());
+				l.getNodes().get(l.getNodes().size()-1).setType(txt);
+				this.update();
+				nodes.addItem(txt);
+				nodes.setSelectedIndex((l.getNodes().size()-1));
+				addNode.setText("");
+			}else{
+				JOptionPane.showMessageDialog(null, "Type muss länger als 3 sein!","Fehlermeldung",
+					    JOptionPane.ERROR_MESSAGE);
+			}
+		}
 	}
 }

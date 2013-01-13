@@ -82,7 +82,7 @@ public abstract class XMLLoader implements Cloneable{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					System.out.println("t");
+					//System.out.println("t");
 //				} catch (CloneNotSupportedException e1) {
 //					// TODO Auto-generated catch block
 //					e1.printStackTrace();

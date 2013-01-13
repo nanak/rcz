@@ -3,7 +3,11 @@ package xml;
 import java.util.List;
 
 import org.jdom2.Element;
-
+/**
+ * Dieses Objekt beinhaltet die Informationen zu einem Rechenzentrum
+ * @author Thomas Traxler
+ *
+ */
 public class Rechenzentrum extends XMLLoader{
 	private String name, land;
 	private List<Supercomputer> sc;

@@ -18,7 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
 
-
+/**
+ * Diese Panel ist für das Bearbeiten eines Supercomputers ausgelegt
+ * @author Dominik
+ */
 public class MyPanel2 extends JPanel implements ActionListener{
 	//Allgemein
 	private JTextField name , network , os, rmax, rpeak, power;
@@ -37,7 +40,13 @@ public class MyPanel2 extends JPanel implements ActionListener{
 	//Erweitern
 	private JTextField addNode;
 	private JButton addNodeButton;
-	
+	/**
+	 * Das ist der Konstruktor zum Aufbauen der Oberfläche zum anzeigen und ändern eines Supercomputerelements
+	 * @param rech liste der Rechenzentrum
+	 * @param indexrech index des Rechenzentrum von dem der Supercomputer angezeigt werden soll
+	 * @param indexsuper index des Supercomputers der angezeigt werden soll
+	 * @param mp übergibt das Hauptpanel
+	 */
 	public MyPanel2(List<Rechenzentrum> rech, int indexrech, int indexsuper,MyPanel1 mp){
 		this.setLayout(new BorderLayout());
 		this.mp = mp;
@@ -68,9 +77,11 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		
 		addNode = new JTextField();
 		
-		//
-		//Undrückbar
-		//edit.setEnabled(false);
+		////Deaktivieren der Buttons deren Funktion noch nicht vorhanden ist
+		edit.setEnabled(false);
+		edit.setToolTipText("Funktion nicht Vorhanden!");
+		addNodeButton.setEnabled(false);
+		addNodeButton.setToolTipText("Funktion nicht Vorhanden!");
 		
 		//Nodes
 		nodes =new JComboBox();
@@ -215,6 +226,9 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		
 		this.update();
 	}
+	/**
+	 * Aktualisiert die Textfelder von den nodes
+	 */
 	public void update(){
 		int index = nodes.getSelectedIndex();
 		type.setText(sp.getNodes().get(index).getType());
@@ -231,7 +245,9 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		notes.setText(sp.getNodes().get(index).getNotes());
 		
 	}
-
+	/**
+	 * Dieser Listener beinhaltet die Funktionalität von den Buttons
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == nodes)
@@ -240,38 +256,37 @@ public class MyPanel2 extends JPanel implements ActionListener{
 			mp.dis1();
 		}
 		if(e.getSource() == edit){
-			//TODO EDIT
 			try{
-				Integer counti = Integer.parseInt(count.getText());
-				Integer cpucounti = Integer.parseInt(cpuCount.getText());
-				Integer gpucounti = Integer.parseInt(gpuCount.getText());
-				Integer memoryi = Integer.parseInt(memory.getText());
-				Integer cpucoresi = Integer.parseInt(cpuCores.getText());
-				char t = ',';
-				double rmaxd = Double.parseDouble(rmax.getText().replace(t, '.'));
-				double rpeakd = Double.parseDouble(rpeak.getText().replace(t, '.'));
-				double powerd = Double.parseDouble(power.getText().replace(t, '.'));
-				double cpuFreqd = Double.parseDouble(cpuFreq.getText().replace(t, '.'));
+//				Integer counti = Integer.parseInt(count.getText());
+//				Integer cpucounti = Integer.parseInt(cpuCount.getText());
+//				Integer gpucounti = Integer.parseInt(gpuCount.getText());
+//				Integer memoryi = Integer.parseInt(memory.getText());
+//				Integer cpucoresi = Integer.parseInt(cpuCores.getText());
+//				char t = ',';
+//				double rmaxd = Double.parseDouble(rmax.getText().replace(t, '.'));
+//				double rpeakd = Double.parseDouble(rpeak.getText().replace(t, '.'));
+//				double powerd = Double.parseDouble(power.getText().replace(t, '.'));
+//				double cpuFreqd = Double.parseDouble(cpuFreq.getText().replace(t, '.'));
 				
 				//Werte setzen
-				sp.setNetwork(network.getText());
-				sp.setPower(powerd);
-				sp.setRmax(rmaxd);
-				sp.setRpeak(rpeakd);
-				sp.getNodes().get(nodes.getSelectedIndex()).setCount(counti);
-				sp.getNodes().get(nodes.getSelectedIndex()).setCpucount(cpucounti);
-				sp.getNodes().get(nodes.getSelectedIndex()).setGpuCount(gpucounti);
-				sp.getNodes().get(nodes.getSelectedIndex()).setMemory(memoryi);
-				sp.getNodes().get(nodes.getSelectedIndex()).setNotes(notes.getText());
-				sp.getNodes().get(nodes.getSelectedIndex()).setType(type.getText());
-				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setFreq(cpuFreqd);
-				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setType(cpuType.getText());
-				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setVendor(cpuVendor.getText());
-				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setCores(cpucoresi);
-				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setType(gpuType.getText());
-				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setVendor(gpuVendor.getText());
-				sp.setOs(os.getText());
-				l.setName(name.getText());
+//				sp.setNetwork(network.getText());
+//				sp.setPower(powerd);
+//				sp.setRmax(rmaxd);
+//				sp.setRpeak(rpeakd);
+//				sp.getNodes().get(nodes.getSelectedIndex()).setCount(counti);
+//				sp.getNodes().get(nodes.getSelectedIndex()).setCpucount(cpucounti);
+//				sp.getNodes().get(nodes.getSelectedIndex()).setGpuCount(gpucounti);
+//				sp.getNodes().get(nodes.getSelectedIndex()).setMemory(memoryi);
+//				sp.getNodes().get(nodes.getSelectedIndex()).setNotes(notes.getText());
+//				sp.getNodes().get(nodes.getSelectedIndex()).setType(type.getText());
+//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setFreq(cpuFreqd);
+//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setType(cpuType.getText());
+//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setVendor(cpuVendor.getText());
+//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setCores(cpucoresi);
+//				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setType(gpuType.getText());
+//				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setVendor(gpuVendor.getText());
+//				sp.setOs(os.getText());
+//				l.setName(name.getText());
 			}catch(NumberFormatException ev){
 				JOptionPane.showMessageDialog(null, "Bitte achte daraf das in den Folgenden Feldern nur Zahlen erlaubt sind: \n Ganzezahlen(2,4,10,14) : Anzahl, RAM, Kerne pro CPU, Anzahl CPU, Anzahl GPU \n Kommazahlen (1.56,5.23,7.34): Max Speed, Peak Speed, Stromverbrauch, Taktfrequenz","Fehlermeldung",JOptionPane.ERROR_MESSAGE);
 			}

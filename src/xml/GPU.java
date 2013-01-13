@@ -1,6 +1,10 @@
 package xml;
 
-
+/**
+ * Dieses Objekt beinhaltet die Informationen zu einer GPU
+ * @author Thomas Traxler
+ *
+ */
 public class GPU extends XMLLoader {
 
 	private String vendor, type;

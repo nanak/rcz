@@ -3,7 +3,10 @@ package xml;
 import java.io.File;
 import java.util.List;
 
-
+/**
+ * Unsere Main Methode zum Öffnen der XML und starten des Programms
+ * @author Dominik Backhausen, Thomas Traxler, Nanak Tattyrek
+ */
 public class opener {
 
 	/**

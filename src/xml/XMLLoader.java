@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.*;
 import org.jdom2.input.*;
-
+/**
+ * XMLLoader
+ * @author Thomas Traxler
+ *
+ */
 public abstract class XMLLoader implements Cloneable{
 	
 	private List<Object>changed;

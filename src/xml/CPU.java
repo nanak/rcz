@@ -1,6 +1,10 @@
 package xml;
 
-
+/**
+ * Dieses Objekt beinhaltet ide Informationen zu einer CPU
+ * @author Thomas Traxler
+ *
+ */
 public class CPU extends XMLLoader {
 	
 

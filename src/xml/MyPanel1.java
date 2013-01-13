@@ -36,8 +36,6 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 	private MyFrame mf1,mf2;
 	private boolean atomic = false;
 	private JTextField name, land;
-	
-	
 	/**
 	 * StandartKonstruktor
 	 */
@@ -65,6 +63,17 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		xquer.addActionListener(this);
 		aendern.addActionListener(this);
 		loeschen.addActionListener(this);
+		
+		//Deaktivieren der Buttons deren Funktion noch nicht vorhanden ist
+		loeschen.setEnabled(false);
+		loeschen.setToolTipText("Funktion nicht Vorhanden!");
+		aendern.setEnabled(false);
+		aendern.setToolTipText("Funktion nicht Vorhanden!");
+		neur.setEnabled(false);
+		neur.setToolTipText("Funktion nicht Vorhanden!");
+		neus.setEnabled(false);
+		neus.setToolTipText("Funktion nicht Vorhanden!");
+		
 		
 		//Textfelder zum bearbeiten initialisieren
 		name = new JTextField();
@@ -107,6 +116,9 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		this.updateList2(jl1.getSelectedIndex());
 		jl2.setSelectedIndex(0);
 	}
+	/**
+	 * Diese Methode Updated die Liste für die der Rechenzentren
+	 */
 	public void updateList1(){
 		atomic = true;
 		dlm1.clear();
@@ -116,6 +128,10 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		jl1.setSelectedIndex(0);
 		atomic = false;
 	}
+	/**
+	 * Update für die Liste der Supercomputer
+	 * @param index gibt das Rechenzentrum an von dem die supercomputer anzeigen
+	 */
 	public void updateList2(int index){
 		if(!atomic){
 			dlm2.clear();
@@ -126,13 +142,16 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 			land.setText(rz.get(index).getLand());
 		}
 	}
+	/**
+	 * ActionListener der die Funktionalität der Buttons gewärleistet
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Aktionen wenn ein Button gedrückt wird
 		if(e.getSource() == neur){
-			String txt = JOptionPane.showInputDialog("Bte den Namen von dem Neuen Rechenzentrum angeben!");
+			String txt = JOptionPane.showInputDialog("Bitte den Namen von dem Neuen Rechenzentrum angeben!");
 			if(txt != null){
-				String txt1 = JOptionPane.showInputDialog("Bte das Land von dem Neuen Rechenzentrum angeben!");
+				String txt1 = JOptionPane.showInputDialog("Bitte das Land von dem Neuen Rechenzentrum angeben!");
 				if(txt1 != null){
 					System.out.println(txt);
 					if( txt.length() > 3 || txt1.length() > 3){
@@ -186,16 +205,24 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 			 mf2 = new MyFrame(new MyPanel4(),1100,100,500,600,false );
 		 }
 	}
+	/**
+	 * Dieser Listener reagiert auf auswahlsänderungen in einer der listen
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		if(e.getSource() == jl1){
 			this.updateList2(jl1.getSelectedIndex());
 		}
 	}
-	//zum ausblenden der weiteren Bearbeitungs fenster
+	/**
+	 * Deaktiviert Fenster 1
+	 */
 	public void dis1(){
 		mf1.dispose();
 	}
+	/**
+	 * Deaktiviert Fenster 2
+	 */
 	public void dis2(){
 		mf2.dispose();
 	}

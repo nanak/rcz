@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.jdom2.Element;
 
+/**
+ * Dieses Objekt beinhaltet die Spezialinformationen eines Supercomputer
+ * @author Thomas Traxler
+ *
+ */
 public class Specs extends XMLLoader {
 	
 	private String network, os;

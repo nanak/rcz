@@ -1,7 +1,11 @@
 package xml;
 
 
-
+/**
+ * Dieses Objekt beinhaltet die Informationen zu einem Node
+ * @author Thomas Traxler
+ *
+ */
 public class Node extends XMLLoader{
 	private String type, notes;
 	private Integer count, gpuCount, memory, cpuCount;

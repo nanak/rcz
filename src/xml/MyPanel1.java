@@ -54,7 +54,7 @@ public class MyPanel1 extends JPanel implements ActionListener, ListSelectionLis
 		neur = new JButton("Neues Rechenzentrum");
 		neus = new JButton("Neuer Supercomputer");
 		edit = new JButton("Bearbeiten");
-		xquer = new JButton("XQuery");
+		xquer = new JButton("XPath");
 		aendern = new JButton("Ändern");
 		loeschen = new JButton ("Löschen");
 		neur.addActionListener(this);

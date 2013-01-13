@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
 
+
 public class MyPanel2 extends JPanel implements ActionListener{
 	//Allgemein
 	private JTextField name , network , os, rmax, rpeak, power;
@@ -233,11 +234,11 @@ public class MyPanel2 extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if(e.getSource() == nodes)
-//			update();
-//		if(e.getSource() == back){
-//			mp.dis();
-//		}
+		if(e.getSource() == nodes)
+			update();
+		if(e.getSource() == back){
+			mp.dis1();
+		}
 //		if(e.getSource() == edit){
 //			//tODO EDIT
 //		}

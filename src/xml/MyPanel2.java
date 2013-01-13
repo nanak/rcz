@@ -70,7 +70,7 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		
 		//
 		//Undrückbar
-		edit.setEnabled(false);
+		//edit.setEnabled(false);
 		
 		//Nodes
 		nodes =new JComboBox();
@@ -239,22 +239,56 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		if(e.getSource() == back){
 			mp.dis1();
 		}
-//		if(e.getSource() == edit){
-//			//tODO EDIT
-//		}
-//		if(e.getSource() == addNodeButton){
-//			String txt = addNode.getText();
-//			if(txt.length() > 3){
+		if(e.getSource() == edit){
+			//TODO EDIT
+			try{
+				Integer counti = Integer.parseInt(count.getText());
+				Integer cpucounti = Integer.parseInt(cpuCount.getText());
+				Integer gpucounti = Integer.parseInt(gpuCount.getText());
+				Integer memoryi = Integer.parseInt(memory.getText());
+				Integer cpucoresi = Integer.parseInt(cpuCores.getText());
+				char t = ',';
+				double rmaxd = Double.parseDouble(rmax.getText().replace(t, '.'));
+				double rpeakd = Double.parseDouble(rpeak.getText().replace(t, '.'));
+				double powerd = Double.parseDouble(power.getText().replace(t, '.'));
+				double cpuFreqd = Double.parseDouble(cpuFreq.getText().replace(t, '.'));
+				
+				//Werte setzen
+				sp.setNetwork(network.getText());
+				sp.setPower(powerd);
+				sp.setRmax(rmaxd);
+				sp.setRpeak(rpeakd);
+				sp.getNodes().get(nodes.getSelectedIndex()).setCount(counti);
+				sp.getNodes().get(nodes.getSelectedIndex()).setCpucount(cpucounti);
+				sp.getNodes().get(nodes.getSelectedIndex()).setGpuCount(gpucounti);
+				sp.getNodes().get(nodes.getSelectedIndex()).setMemory(memoryi);
+				sp.getNodes().get(nodes.getSelectedIndex()).setNotes(notes.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).setType(type.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setFreq(cpuFreqd);
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setType(cpuType.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setVendor(cpuVendor.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setCores(cpucoresi);
+				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setType(gpuType.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setVendor(gpuVendor.getText());
+				sp.setOs(os.getText());
+				l.setName(name.getText());
+			}catch(NumberFormatException ev){
+				JOptionPane.showMessageDialog(null, "Bitte achte daraf das in den Folgenden Feldern nur Zahlen erlaubt sind: \n Ganzezahlen(2,4,10,14) : Anzahl, RAM, Kerne pro CPU, Anzahl CPU, Anzahl GPU \n Kommazahlen (1.56,5.23,7.34): Max Speed, Peak Speed, Stromverbrauch, Taktfrequenz","Fehlermeldung",JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		if(e.getSource() == addNodeButton){
+			String txt = addNode.getText();
+			if(txt.length() > 3){
 //				l.getNodes().add(new Node());
 //				l.getNodes().get(l.getNodes().size()-1).setType(txt);
 //				this.update();
 //				nodes.addItem(txt);
 //				nodes.setSelectedIndex((l.getNodes().size()-1));
 //				addNode.setText("");
-//			}else{
-//				JOptionPane.showMessageDialog(null, "Type muss länger als 3 sein!","Fehlermeldung",
-//					    JOptionPane.ERROR_MESSAGE);
-//			}
-//		}
+			}else{
+				JOptionPane.showMessageDialog(null, "Type muss länger als 3 sein!","Fehlermeldung",
+					    JOptionPane.ERROR_MESSAGE);
+			}
+		}
 	}
 }

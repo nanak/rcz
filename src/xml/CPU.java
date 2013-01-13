@@ -1,7 +1,7 @@
 package xml;
 
 /**
- * Dieses Objekt beinhaltet ide Informationen zu einer CPU
+ * Dieses Objekt beinhaltet die Informationen einer CPU
  * @author Thomas Traxler
  *
  */

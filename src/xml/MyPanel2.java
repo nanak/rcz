@@ -78,8 +78,8 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		addNode = new JTextField();
 		
 		////Deaktivieren der Buttons deren Funktion noch nicht vorhanden ist
-		edit.setEnabled(false);
-		edit.setToolTipText("Funktion nicht Vorhanden!");
+//		edit.setEnabled(false);
+//		edit.setToolTipText("Funktion nicht Vorhanden!");
 		addNodeButton.setEnabled(false);
 		addNodeButton.setToolTipText("Funktion nicht Vorhanden!");
 		
@@ -257,36 +257,36 @@ public class MyPanel2 extends JPanel implements ActionListener{
 		}
 		if(e.getSource() == edit){
 			try{
-//				Integer counti = Integer.parseInt(count.getText());
-//				Integer cpucounti = Integer.parseInt(cpuCount.getText());
-//				Integer gpucounti = Integer.parseInt(gpuCount.getText());
-//				Integer memoryi = Integer.parseInt(memory.getText());
-//				Integer cpucoresi = Integer.parseInt(cpuCores.getText());
-//				char t = ',';
-//				double rmaxd = Double.parseDouble(rmax.getText().replace(t, '.'));
-//				double rpeakd = Double.parseDouble(rpeak.getText().replace(t, '.'));
-//				double powerd = Double.parseDouble(power.getText().replace(t, '.'));
-//				double cpuFreqd = Double.parseDouble(cpuFreq.getText().replace(t, '.'));
+				Integer counti = Integer.parseInt(count.getText());
+				Integer cpucounti = Integer.parseInt(cpuCount.getText());
+				Integer gpucounti = Integer.parseInt(gpuCount.getText());
+				Integer memoryi = Integer.parseInt(memory.getText());
+				Integer cpucoresi = Integer.parseInt(cpuCores.getText());
+				char t = ',';
+				double rmaxd = Double.parseDouble(rmax.getText().replace(t, '.'));
+				double rpeakd = Double.parseDouble(rpeak.getText().replace(t, '.'));
+				double powerd = Double.parseDouble(power.getText().replace(t, '.'));
+				double cpuFreqd = Double.parseDouble(cpuFreq.getText().replace(t, '.'));
 				
 				//Werte setzen
-//				sp.setNetwork(network.getText());
-//				sp.setPower(powerd);
-//				sp.setRmax(rmaxd);
-//				sp.setRpeak(rpeakd);
-//				sp.getNodes().get(nodes.getSelectedIndex()).setCount(counti);
-//				sp.getNodes().get(nodes.getSelectedIndex()).setCpucount(cpucounti);
-//				sp.getNodes().get(nodes.getSelectedIndex()).setGpuCount(gpucounti);
-//				sp.getNodes().get(nodes.getSelectedIndex()).setMemory(memoryi);
-//				sp.getNodes().get(nodes.getSelectedIndex()).setNotes(notes.getText());
-//				sp.getNodes().get(nodes.getSelectedIndex()).setType(type.getText());
-//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setFreq(cpuFreqd);
-//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setType(cpuType.getText());
-//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setVendor(cpuVendor.getText());
-//				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setCores(cpucoresi);
-//				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setType(gpuType.getText());
-//				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setVendor(gpuVendor.getText());
-//				sp.setOs(os.getText());
-//				l.setName(name.getText());
+				sp.setNetwork(network.getText());
+				sp.setPower(powerd);
+				sp.setRmax(rmaxd);
+				sp.setRpeak(rpeakd);
+				sp.getNodes().get(nodes.getSelectedIndex()).setCount(counti);
+				sp.getNodes().get(nodes.getSelectedIndex()).setCpucount(cpucounti);
+				sp.getNodes().get(nodes.getSelectedIndex()).setGpuCount(gpucounti);
+				sp.getNodes().get(nodes.getSelectedIndex()).setMemory(memoryi);
+				sp.getNodes().get(nodes.getSelectedIndex()).setNotes(notes.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).setType(type.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setFreq(cpuFreqd);
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setType(cpuType.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setVendor(cpuVendor.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getCpu().setCores(cpucoresi);
+				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setType(gpuType.getText());
+				sp.getNodes().get(nodes.getSelectedIndex()).getGpu().setVendor(gpuVendor.getText());
+				sp.setOs(os.getText());
+				l.setName(name.getText());
 			}catch(NumberFormatException ev){
 				JOptionPane.showMessageDialog(null, "Bitte achte daraf das in den Folgenden Feldern nur Zahlen erlaubt sind: \n Ganzezahlen(2,4,10,14) : Anzahl, RAM, Kerne pro CPU, Anzahl CPU, Anzahl GPU \n Kommazahlen (1.56,5.23,7.34): Max Speed, Peak Speed, Stromverbrauch, Taktfrequenz","Fehlermeldung",JOptionPane.ERROR_MESSAGE);
 			}

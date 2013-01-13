@@ -1,7 +1,7 @@
 package xml;
 
 /**
- * Dieses Objekt beinhaltet die Informationen zu einer GPU
+ * Dieses Objekt beinhaltet die Informationen einer GPU
  * @author Thomas Traxler
  *
  */

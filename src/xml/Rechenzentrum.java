@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.jdom2.Element;
 /**
- * Dieses Objekt beinhaltet die Informationen zu einem Rechenzentrum
+ * Dieses Objekt beinhaltet die Informationen eines Rechenzentrums
  * @author Thomas Traxler
  *
  */
@@ -12,11 +12,7 @@ public class Rechenzentrum extends XMLLoader{
 	private String name, land;
 	private List<Supercomputer> sc;
 	
-	/**
-	 * ChangeValue
-	 * @param o1
-	 * @param o2
-	 */
+	
 	
 	public Rechenzentrum (Element e){
 		super(e);

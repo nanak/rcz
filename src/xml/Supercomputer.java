@@ -5,7 +5,7 @@ import java.util.List;
 import org.jdom2.Element;
 
 /**
- * Dieses Objekt beinhaltet die Informationen zu einem Supercomputer
+ * Dieses Objekt beinhaltet die Informationen zu eines Supercomputers
  * @author Thomas Traxler
  *
  */

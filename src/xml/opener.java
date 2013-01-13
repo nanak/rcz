@@ -31,16 +31,10 @@ public class opener {
 				new MyFrame(new MyPanel1(xml),100,100,500,600,true);
 			}
 		}
-		if(a)//TODO: Replace with if(a)
+		if(a)
 			System.out.println("No valid Filepath\nTodo: Replace with synoptic\n\n -<filepath>|d|g\n Angegebenes Rechenzentrum-Xml Öffnen    |   defaultXML  | GUI zur Fileauswahl (nicht implementiert)");
 		
 		
-//		//Workaround temporär
-//		Xml xml = new Xml ("Rechenzentrum.xml");
-//		List<Rechenzentrum> l = xml.getRechenzentren();
-//		for(int i = 0;i<l.size();i++){
-//			System.out.println(l.get(i).toString());
-//		}
 		
 		
 	}

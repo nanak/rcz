@@ -2,7 +2,7 @@ package xml;
 
 
 /**
- * Dieses Objekt beinhaltet die Informationen zu einem Node
+ * Dieses Objekt beinhaltet die Informationen eines Nodes
  * @author Thomas Traxler
  *
  */

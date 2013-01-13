@@ -6,6 +6,7 @@ import org.jdom2.*;
 import org.jdom2.input.*;
 /**
  * XMLLoader
+ * Lädt Werte aus einem XML-Element e und gibt diese Zurück, soll außerdem alle Änderungen aufzeichnen so dass bei späteren Veränderungen nur diese übernommen werden müssen und icht das komplette XML neu strukturiert werden muss.
  * @author Thomas Traxler
  *
  */
@@ -18,9 +19,10 @@ public abstract class XMLLoader implements Cloneable{
 	
 	public XMLLoader(Element e){
 		this.e=e;
+		changed=new ArrayList<Object>();
 	}
 	/**
-	 * cahngeValue
+	 * cahngeValue (Funktion nicht getestet, bzw. garantiert)
 	 * @param o1
 	 * @param o2
 	 */
@@ -29,10 +31,8 @@ public abstract class XMLLoader implements Cloneable{
 		if(changed.indexOf(o1)==-1)
 			changed.add(o1);
 	}
-	/**
-	 * load
-	 * @return
-	 */
+
+	
 	protected String loadString (String o,String name){
 		if(!loaded && o==null){
 			return e.getChildText(name);

@@ -8,7 +8,7 @@
 			<specs>
 				<rmax>17590</rmax> <!-- Linpack Performance in TFlops -->
 				<rpeak>27117.5</rpeak> <!-- Theoretical Peak in TFlops -->
-				<power>830</power> <!-- in kW -->
+				<power>8209</power> <!-- in kW -->
 				<network>Cray Gemini interconnect</network>
 				<os>Cray Linux Environment</os>
 				<node>
